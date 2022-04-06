@@ -1,5 +1,9 @@
 package homework3;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -9,7 +13,7 @@ public class HomeWorkApp3 {
     static Scanner in = new Scanner(System.in);     //Задание переменной для считывания с консоли
 
     public static void main(String[] args) {
-        System.out.printf("1 пункт д/з: %n");
+        /*System.out.printf("1 пункт д/з: %n");
         numberInverter();                           //Вызов метода 1 пункта д/з
         System.out.printf("%n2 пункт д/з: %n");
         oneHundred();                               //Вызов метода 2 пункта д/з
@@ -23,7 +27,7 @@ public class HomeWorkApp3 {
         int initialValue = in.nextInt();            //Ввод через консоль значения элемента массива 5 пункта д/з
         System.out.println("Полученный массив: " + Arrays.toString(lengthLineFiller(len, initialValue))); //Вывод на экран полученного массива полученного из метода 5 пункта д/з
         System.out.printf("%n6 пункт д/з: %n");
-        minMaxFinder();                             //Вызов метода 6 пункта д/з
+        minMaxFinder();                             //Вызов метода 6 пункта д/з*/
         System.out.printf("%n7 пункт д/з: %n");
         int[] lineToCheck = new int[10];            //Создание массива из 10 элементов с его последующим заполнением случайными числами
         for (int i = 0; i < lineToCheck.length; i++) {
@@ -39,7 +43,7 @@ public class HomeWorkApp3 {
         System.out.println(Arrays.toString(lineToSlide));   //Вывод на экран массива в изначальной форме
         System.out.printf("%nВведите значение сдвига массива массива (знак '-' сдвигает вправо): %n");
         int n = in.nextInt();                       //Ввод через консоль значения сдвига массива
-        lineSlider(lineToSlide, n);                 //Вызов метода 8 пункта д/з
+        System.out.println(lineSlider(lineToSlide, n));                 //Вызов метода 8 пункта д/з
     }
 
     public static void numberInverter() {
@@ -150,12 +154,12 @@ public class HomeWorkApp3 {
             }
             count++;
         }
-        while (controlNum < sum);   //Если баланс не достигнут, а сумма уже просуммированных элементов превысила значение баланса,
+        while (controlNum != sum && count < lineToCheck.length);   //Если баланс не достигнут, а сумма уже просуммированных элементов превысила значение баланса,
         return false;               //то происходит завершение цикла с последующим возвратом отрицательно результата в вызывающий метод
     }
 
-    public static void lineSlider(int[] lineToSlide, int n) {
-        System.out.println("Сещенный на " + n + " массив:");
+    public static int[] lineSlider(int[] lineToSlide, int n) {
+        System.out.println("Смещенный на " + n + " массив:");
         n %= lineToSlide.length;        //Отсечение от переменной сдвига значений полного смещения цикла
         if (n < 0) {                    //Перевод отрицательного сдвиг в аналогичный положительный
             n = lineToSlide.length + n;
@@ -172,6 +176,8 @@ public class HomeWorkApp3 {
             }
             lineToSlide[lineToSlide.length - 1] = reserve;
         }
-        System.out.println(Arrays.toString(lineToSlide));       //Вывод в консоль сдвинутого массива
+//        System.out.println(Arrays.toString(lineToSlide));       //Вывод в консоль сдвинутого массива
+        return lineToSlide;
     }
 }
+
